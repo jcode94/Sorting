@@ -16,7 +16,7 @@ public class SortSuite
 	// public void insertionSort(List<Integer> list);
 	//
 	// ==============================
-	// 			  MergeSort
+	// MergeSort
 	// ==============================
 	//
 	// To avoid inaccuracies with lo/hi initilizations.
@@ -78,7 +78,7 @@ public class SortSuite
 	}
 	//
 	// ==============================
-	// 			  QuickSort
+	// QuickSort
 	// ==============================
 	//
 	public static void quickSort(List<Integer> list)
