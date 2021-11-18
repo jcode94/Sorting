@@ -6,69 +6,18 @@ import java.util.*;
 
 public class SortSuite
 {
-	
-	private static List<Integer> getRandomList(int n)
-	{
-		List<Integer> list = new ArrayList<Integer>(n);
-
-		for (int i = 0; i < n; i++)
-			list.add((int) (Math.random() * 100 + 1));
-
-		return list;
-	}
-
-	public static void quickSort(List<Integer> list)
-	{
-		quickSort(list, 0, list.size() - 1);					
-	}
-
-	private static void quickSort(List<Integer> list, int lo, int hi)
-	{
-		if (lo >= hi) return;
-
-		int mid = lo + (hi - lo) / 2;
-		int pivot = list.get(mid);
-
-		int i = lo;
-		int j = hi;
-
-		while (i <= j)
-		{
-			while (list.get(i) < pivot)
-			{
-				i++;
-			}
-			while (list.get(j) > pivot)
-			{
-				j--;
-			}
-			if (i <= j)
-			{
-				swap(list, i, j);
-				i++;
-				j--;
-			}
-		}
-
-		if (j > lo)
-		{
-			quickSort(list, lo, j);
-		}
-		if (i < hi)
-		{
-			quickSort(list, i, hi);
-		}
-	}
-
-	private static void swap(List<Integer> list, int x, int y)
-	{
-		Integer temp = list.get(x);
-		list.set(x, list.get(y));
-		list.set(y, temp);
-	}
-
-
-	// MergeSort Wrapper
+	// Comparison-based sorts
+	// ==============================
+	//
+	// Destructive:
+	//
+	// public void bubbleSort(List<Integer> list);
+	// public void heapSort(List<Integer> list);
+	// public void insertionSort(List<Integer> list);
+	//
+	// ==============================
+	// 			  MergeSort
+	// ==============================
 	//
 	// To avoid inaccuracies with lo/hi initilizations.
 	// By simply asking for a container, we can take away
@@ -84,8 +33,7 @@ public class SortSuite
 	{
 		mergeSort(list, 0, list.size() - 1);
 	}
-
-
+	//
 	// MergeSort
 	//
 	// Space complexity: O(n)
@@ -128,12 +76,88 @@ public class SortSuite
 		for (int z = lo; z <= hi; z++)
 			list.set(z, sorted[z - lo]);
 	}
+	//
+	// ==============================
+	// 			  QuickSort
+	// ==============================
+	//
+	public static void quickSort(List<Integer> list)
+	{
+		quickSort(list, 0, list.size() - 1);					
+	}
+
+	private static void quickSort(List<Integer> list, int lo, int hi)
+	{
+		if (lo >= hi) return;
+
+		int mid = lo + (hi - lo) / 2;
+		int pivot = list.get(mid);
+
+		int i = lo;
+		int j = hi;
+
+		while (i <= j)
+		{
+			while (list.get(i) < pivot)
+			{
+				i++;
+			}
+			while (list.get(j) > pivot)
+			{
+				j--;
+			}
+			if (i <= j)
+			{
+				CollectionUtils.swap(list, i, j);
+				i++;
+				j--;
+			}
+		}
+
+		if (j > lo)
+		{
+			quickSort(list, lo, j);
+		}
+		if (i < hi)
+		{
+			quickSort(list, i, hi);
+		}
+	}
+	// public void selectionSort(List<Integer> list);
+	// public void timSort(List<Integer> list);
+	// public void shellSort(List<Integer> list);
+	//
+	// Non-Destructive:
+	//
+	// public List<Integer> bubbleSortCopy(List<Integer> list);
+	// public List<Integer> heapSortCopy(List<Integer> list);
+	// public List<Integer> insertionSortCopy(List<Integer> list);
+	// public List<Integer> mergeSortCopy(List<Integer> list);
+	// public List<Integer> quickSortCopy(List<Integer> list);
+	// public List<Integer> selectionSortCopy(List<Integer> list);
+	// public List<Integer> timSortCopy(List<Integer> list);
+	// public List<Integer> shellSortCopy(List<Integer> list);
+	//
+	//
+	//
+	// Non-Comparison-Based sorts:
+	// ===========================
+	//
+	// public void radixSort(List<Integer> list);
+	// public void countingSort(List<Integer> list);
+	// public void binSort(List<Integer> list);
+	//
+	// Non-Destructive:
+	//
+	// public List<Integer> radixSortCopy(List<Integer> list);
+	// public List<Integer> countingSortCopy(List<Integer> list);
+	// public List<Integer> binSortCopy(List<Integer> list);
 
     public static void main(String [] args)
     {
         int n = (args.length > 0) ? Integer.parseInt(args[0]) : 10;
         
-        List<Integer> arr = getRandomList(n);
+        List<Integer> arr = CollectionUtils.getRandomList(n);
         
         System.out.println("Unsorted:");
         System.out.println(arr.toString());
@@ -152,6 +176,5 @@ public class SortSuite
         
         System.out.println("QuickSorted:");
         System.out.println(arr.toString());
-
     }
 }
