@@ -128,7 +128,6 @@ public class SortSuite
 	//
 	public static void selectionSort(List<Integer> list)
 	{
-
 		for (int i = 0; i < list.size() - 1; i++)
 		{
 
@@ -185,12 +184,12 @@ public class SortSuite
         System.out.println("Unsorted:");
         System.out.println(arr.toString());
         
-		mergeSort(arr);
+        mergeSort(arr);
         
         System.out.println("MergeSorted:");
         System.out.println(arr.toString());
 
-		Collections.shuffle(arr);
+        Collections.shuffle(arr);
 
         System.out.println("Unsorted:");
         System.out.println(arr.toString());
@@ -200,7 +199,7 @@ public class SortSuite
         System.out.println("QuickSorted:");
         System.out.println(arr.toString());
 
-		Collections.shuffle(arr);
+        Collections.shuffle(arr);
 
         System.out.println("Unsorted:");
         System.out.println(arr.toString());
@@ -210,6 +209,6 @@ public class SortSuite
         System.out.println("SelectionSorted:");
         System.out.println(arr.toString());
 
-		Collections.shuffle(arr);
+        Collections.shuffle(arr);
     }
 }
