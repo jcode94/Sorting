@@ -115,15 +115,38 @@ public class SortSuite
 		}
 
 		if (j > lo)
-		{
 			quickSort(list, lo, j);
-		}
+
 		if (i < hi)
-		{
 			quickSort(list, i, hi);
+
+	}
+	//
+	// ==============================
+	// Selection Sort
+	// ==============================
+	//
+	public static void selectionSort(List<Integer> list)
+	{
+
+		for (int i = 0; i < list.size() - 1; i++)
+		{
+
+			// Set starting min location
+			int minIdx = i;
+
+			// Track index of smallest value found
+			for (int j = i+1; j < list.size(); j++)
+				if (list.get(j) < list.get(minIdx))
+					minIdx = j;			
+
+			// If we have found a smaller value, move it to the front
+			// of our unsorted section.
+			if (minIdx != i)
+				CollectionUtils.swap(list, i, minIdx);
 		}
 	}
-	// public void selectionSort(List<Integer> list);
+
 	// public void timSort(List<Integer> list);
 	// public void shellSort(List<Integer> list);
 	//
@@ -162,12 +185,12 @@ public class SortSuite
         System.out.println("Unsorted:");
         System.out.println(arr.toString());
         
-	mergeSort(arr);
+		mergeSort(arr);
         
         System.out.println("MergeSorted:");
         System.out.println(arr.toString());
 
-	Collections.shuffle(arr);
+		Collections.shuffle(arr);
 
         System.out.println("Unsorted:");
         System.out.println(arr.toString());
@@ -176,5 +199,17 @@ public class SortSuite
         
         System.out.println("QuickSorted:");
         System.out.println(arr.toString());
+
+		Collections.shuffle(arr);
+
+        System.out.println("Unsorted:");
+        System.out.println(arr.toString());
+        
+        selectionSort(arr);
+        
+        System.out.println("SelectionSorted:");
+        System.out.println(arr.toString());
+
+		Collections.shuffle(arr);
     }
 }
