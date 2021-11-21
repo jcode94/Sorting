@@ -11,7 +11,17 @@ public class SortSuite
 	//
 	// Destructive:
 	//
-	// public void bubbleSort(List<Integer> list);
+	public static void bubbleSort(List<Integer> list)
+	{
+		for (int i = 0; i < list.size(); i++)
+		{
+			for (int j = list.size() - 1; j > 0; j--)
+			{
+				if (list.get(j - 1) < list.get(j))
+					CollectionUtils.swap(list, j - 1, j);
+			}
+		}
+	}
 	// public void heapSort(List<Integer> list);
 	// public void insertionSort(List<Integer> list);
 	//
@@ -207,6 +217,16 @@ public class SortSuite
         selectionSort(arr);
         
         System.out.println("SelectionSorted:");
+        System.out.println(arr.toString());
+
+        Collections.shuffle(arr);
+
+		System.out.println("Unsorted:");
+        System.out.println(arr.toString());
+        
+        bubbleSort(arr);
+        
+        System.out.println("BubbleSorted:");
         System.out.println(arr.toString());
 
         Collections.shuffle(arr);
