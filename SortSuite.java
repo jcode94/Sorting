@@ -23,7 +23,25 @@ public class SortSuite
 		}
 	}
 	// public void heapSort(List<Integer> list);
-	// public void insertionSort(List<Integer> list);
+	//
+	// ==============================
+	// InsertionSort
+	// ==============================
+	//
+	public static void insertionSort(List<Integer> list)
+	{
+		int i = 1;
+		while (i < list.size())
+		{
+			int j = i;
+			while (j > 0 && list.get(j - 1) > list.get(j))
+			{
+				CollectionUtils.swap(list, j, j - 1);
+				j--;
+			}
+			i++;
+		}
+	}
 	//
 	// ==============================
 	// MergeSort
@@ -227,6 +245,16 @@ public class SortSuite
         bubbleSort(arr);
         
         System.out.println("BubbleSorted:");
+        System.out.println(arr.toString());
+
+        Collections.shuffle(arr);
+
+		System.out.println("Unsorted:");
+        System.out.println(arr.toString());
+        
+        insertionSort(arr);
+        
+        System.out.println("InsertionSorted:");
         System.out.println(arr.toString());
 
         Collections.shuffle(arr);
