@@ -176,6 +176,20 @@ public class SortSuite
 
 	// public void timSort(List<Integer> list);
 	// public void shellSort(List<Integer> list);
+    public static void countingSort(List<Integer> list)
+    {
+        Integer max = CollectionUtils.findMax(list);
+
+        int [] freqArr = new int[max + 1];
+
+        for (Integer val : list)
+            freqArr[val]++;
+
+        int k = 0;
+        for (int i = 0; i <= max; i++)
+            while (freqArr[i]-- > 0)
+                list.set(k++, i);
+    }
 	//
 	// Non-Destructive:
 	//
@@ -255,6 +269,16 @@ public class SortSuite
         insertionSort(arr);
         
         System.out.println("InsertionSorted:");
+        System.out.println(arr.toString());
+
+        Collections.shuffle(arr);
+
+        System.out.println("Unsorted:");
+        System.out.println(arr.toString());
+        
+        countingSort(arr);
+        
+        System.out.println("CountingSorted:");
         System.out.println(arr.toString());
 
         Collections.shuffle(arr);
