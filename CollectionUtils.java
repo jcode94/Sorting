@@ -79,13 +79,5 @@ class CollectionUtils
 
         return median3(val1, val2, a[4]);
     }
-
-    public static void main(String [] args)
-    {
-        int [] test = new int[] { 3, 9, 0, 5, 7 };
-
-        System.out.println("Array: " + Arrays.toString(test));
-        System.out.println("Median of 5: " + median5(test));
-    }
 }
 
